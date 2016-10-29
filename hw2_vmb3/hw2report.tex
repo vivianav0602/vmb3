@@ -1,0 +1,242 @@
+\documentclass[]{tufte-handout}
+
+% ams
+\usepackage{amssymb,amsmath}
+
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \makeatletter
+  \@ifpackageloaded{fontspec}{}{\usepackage{fontspec}}
+  \makeatother
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \makeatletter
+  \@ifpackageloaded{soul}{
+     \renewcommand\allcapsspacing[1]{{\addfontfeature{LetterSpace=15}#1}}
+     \renewcommand\smallcapsspacing[1]{{\addfontfeature{LetterSpace=10}#1}}
+   }{}
+  \makeatother
+\fi
+
+% graphix
+\usepackage{graphicx}
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+
+% booktabs
+\usepackage{booktabs}
+
+% url
+\usepackage{url}
+
+% hyperref
+\usepackage{hyperref}
+
+% units.
+\usepackage{units}
+
+
+\setcounter{secnumdepth}{-1}
+
+% citations
+\usepackage{natbib}
+\bibliographystyle{plainnat}
+
+% pandoc syntax highlighting
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+\newcommand{\ImportTok}[1]{{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+\newcommand{\BuiltInTok}[1]{{#1}}
+\newcommand{\ExtensionTok}[1]{{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+\newcommand{\RegionMarkerTok}[1]{{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+\newcommand{\NormalTok}[1]{{#1}}
+
+% longtable
+
+% multiplecol
+\usepackage{multicol}
+
+% strikeout
+\usepackage[normalem]{ulem}
+
+% morefloats
+\usepackage{morefloats}
+
+
+% tightlist macro required by pandoc >= 1.14
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% title / author / date
+\title{Homework 2-Descriptive Statistics and ANOVA of ER Waiting time}
+\author{Viviana Berry}
+\date{2016-10-28}
+
+
+\begin{document}
+
+\maketitle
+
+
+
+
+\section{Descriptive Statistics:}\label{descriptive-statistics}
+
+Our variables, Main, Satellite.1, Satellite.2 and Satellite.3, seem to
+have very different means but when we take into consideration their
+variability all of them seem to overlap at least with one other
+variable.
+
+Therefore, we perform a descriptive statistics analysis considering
+other factors as shown in the table below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{print}\NormalTok{(summary.data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##              day       Main  Satellite.1
+## mean    8.000000  69.842667  41.25400000
+## sd      4.472136  18.202192  19.39010160
+## var    20.000000 331.319792 375.97604000
+## Min     1.000000  47.940000   8.99000000
+## q1      4.500000  58.930000  28.71000000
+## median  8.000000  64.990000  37.28000000
+## q3     11.500000  79.825000  53.67000000
+## Max    15.000000 120.080000  72.30000000
+## Kurt   -1.441333   1.239497  -1.28180663
+## Skew    0.000000   1.154559  -0.09562142
+##        Satellite.2 Satellite.3
+## mean     56.561333  51.9720000
+## sd       14.330152  20.2060925
+## var     205.353255 408.2861743
+## Min      30.400000  11.3700000
+## q1       49.090000  37.8350000
+## median   58.370000  52.9400000
+## q3       63.535000  67.8850000
+## Max      86.290000  83.5100000
+## Kurt     -0.525495  -0.9922604
+## Skew      0.198051  -0.1217972
+\end{verbatim}
+
+\section{Analisis of Variance:}\label{analisis-of-variance}
+
+In order to test this assumption, this hypothesis testing needs to be
+done:
+
+Ho: All averages of ER waiting are the same H1: At least one group has a
+different average
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{print}\NormalTok{(fit1.aov.summary)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                     Df Sum Sq Mean Sq
+## as.factor(variable)  3   6312  2104.1
+## Residuals           56  18493   330.2
+##                     F value   Pr(>F)    
+## as.factor(variable)   6.372 0.000859 ***
+## Residuals                               
+## ---
+## Signif. codes:  
+##   0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1  ' ' 1
+\end{verbatim}
+
+Results;
+
+With 95\% Confidence level, we can reject Ho since P\_value is .00086
+which implies that not all ER waiting time are the same.
+
+\section{Analisis of Tukey Test:}\label{analisis-of-tukey-test}
+
+With a Confidence Interval of .05, the only two pairs that differ from
+each other are Satellite.1-Main and Satellite.3-Main. All the other
+pairings P\_values are larger than the confidence interval;therefore, we
+can conlude that those variables are similar.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{print}\NormalTok{(erdata.tukey)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = value ~ as.factor(variable), data = erdata.melt)
+## 
+## $`as.factor(variable)`
+##                               diff
+## Satellite.1-Main        -28.588667
+## Satellite.2-Main        -13.281333
+## Satellite.3-Main        -17.870667
+## Satellite.2-Satellite.1  15.307333
+## Satellite.3-Satellite.1  10.718000
+## Satellite.3-Satellite.2  -4.589333
+##                                lwr
+## Satellite.1-Main        -46.158986
+## Satellite.2-Main        -30.851652
+## Satellite.3-Main        -35.440986
+## Satellite.2-Satellite.1  -2.262986
+## Satellite.3-Satellite.1  -6.852319
+## Satellite.3-Satellite.2 -22.159652
+##                                 upr
+## Satellite.1-Main        -11.0183478
+## Satellite.2-Main          4.2889855
+## Satellite.3-Main         -0.3003478
+## Satellite.2-Satellite.1  32.8776522
+## Satellite.3-Satellite.1  28.2883188
+## Satellite.3-Satellite.2  12.9809855
+##                             p adj
+## Satellite.1-Main        0.0003814
+## Satellite.2-Main        0.1997139
+## Satellite.3-Main        0.0447878
+## Satellite.2-Satellite.1 0.1086697
+## Satellite.3-Satellite.1 0.3785196
+## Satellite.3-Satellite.2 0.8998737
+\end{verbatim}
+
+\bibliography{skeleton}
+
+
+
+\end{document}

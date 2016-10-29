@@ -1,0 +1,66 @@
+---
+title: "Homework 2-Descriptive Statistics and ANOVA of ER Waiting time"
+subtitle: "An implementation in R Markdown"
+author: "Viviana Berry"
+date: "`r Sys.Date()`"
+output:
+  tufte::tufte_html: default
+  tufte::tufte_handout:
+    citation_package: natbib
+    latex_engine: xelatex
+  tufte::tufte_book:
+    citation_package: natbib
+    latex_engine: xelatex
+bibliography: skeleton.bib
+link-citations: yes
+---
+
+```{r setup, include=FALSE}
+library(tufte)
+# invalidate cache when the tufte version changes
+knitr::opts_chunk$set(tidy = FALSE, cache.extra = packageVersion('tufte'))
+options(htmltools.dir.version = FALSE)
+setwd("C:/Users/vivia/OneDrive/Documents/GitHub/vmb3/Class 2/Report2")
+source("../hw2.R")
+```
+
+# Descriptive Statistics:
+
+Our variables, Main, Satellite.1, Satellite.2 and Satellite.3, seem to have very different means but when we take into consideration their variability all of them seem to overlap at least with one other variable.
+
+Therefore, we perform a descriptive statistics analysis considering other factors as shown in the table below:
+
+```{r}
+print(summary.data)
+```
+
+ 
+# Analisis of Variance:
+
+In order to test this assumption, this hypothesis testing needs to be done:
+
+Ho: All averages of ER waiting are the same
+H1: At least one group has a different average
+
+```{r}
+print(fit1.aov.summary)
+```
+
+Results;
+
+With 95% Confidence level, we can reject Ho since P_value is .00086 which implies that not all ER waiting time are the same.
+
+
+# Analisis of Tukey Test:
+
+With a Confidence Interval of .05, the only two pairs that differ from each other are Satellite.1-Main and Satellite.3-Main. All the other pairings P_values are larger than the confidence interval;therefore, we can conlude that those variables are similar.
+
+```{r}
+print(erdata.tukey)
+```
+
+
+```{r bib, include=FALSE}
+# create a bib file for the R packages used in this document
+knitr::write_bib(c('base', 'rmarkdown'), file = 'skeleton.bib')
+```
